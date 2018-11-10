@@ -11,17 +11,29 @@ import './index.css';
 // // Learn more about service workers: http://bit.ly/CRA-PWA
 // serviceWorker.unregister();
 
-class Square extends React.Component {
-    render() {
+
+// class Square extends React.Component {
+//     render() {
+//       return (
+//         <button 
+//             className="square" 
+//             onClick={() => this.props.onClick()}
+//         >
+//           {this.props.value}
+//         </button>
+//       );
+//     }
+//   }
+  // todo
+  function Square(props) {
       return (
         <button 
             className="square" 
-            onClick={() => this.props.onClick()}
+            onClick={props.onClick}
         >
-          {this.props.value}
+          {props.value}
         </button>
       );
-    }
   }
   
   class Board extends React.Component {
@@ -34,6 +46,7 @@ class Square extends React.Component {
 
     handleClick(i) {
       const squares = this.state.squares.slice();
+      // used .slice() to create a copy of the squares array.
       squares[i] = `X`;
       this.setState({squares: squares});
     }
