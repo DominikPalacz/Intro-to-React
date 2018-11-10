@@ -5,11 +5,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-          <p>sass p
-          <span>
-            sass span
-          </span>
-        </p>
+         Hello
       </div>
     );
   }
