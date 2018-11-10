@@ -11,20 +11,6 @@ import './index.css';
 // // Learn more about service workers: http://bit.ly/CRA-PWA
 // serviceWorker.unregister();
 
-
-// class Square extends React.Component {
-//     render() {
-//       return (
-//         <button 
-//             className="square" 
-//             onClick={() => this.props.onClick()}
-//         >
-//           {this.props.value}
-//         </button>
-//       );
-//     }
-//   }
-  // todo
   function Square(props) {
       return (
         <button 
@@ -41,14 +27,18 @@ import './index.css';
       super(props);
       this.state = {
         squares: Array(9).fill(null),
+        xIsNext: true,
       };
     }
 
     handleClick(i) {
       const squares = this.state.squares.slice();
       // used .slice() to create a copy of the squares array.
-      squares[i] = `X`;
-      this.setState({squares: squares});
+      squares[i] = this.state.xIsNext ? `X` : `O`;
+      this.setState({
+        squares: squares,
+        xIsNext: !this.state.xIsNext
+      });
     }
     
     renderSquare(i) {
@@ -59,7 +49,7 @@ import './index.css';
     }
   
     render() {
-      const status = 'Next player: X';
+      const status = 'Next player: ' + (this.state.xIsNext ? `X` : `O`);
   
       return (
         <div>
