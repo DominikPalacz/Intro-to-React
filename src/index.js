@@ -1,15 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-// import App from './App';
-// import * as serviceWorker from './serviceWorker';
-
-// ReactDOM.render(<App />, document.getElementById('root'));
-
-// // If you want your app to work offline and load faster, you can change
-// // unregister() to register() below. Note this comes with some pitfalls.
-// // Learn more about service workers: http://bit.ly/CRA-PWA
-// serviceWorker.unregister();
+import App from './App'
 
   function Square(props) {
       return (
@@ -108,11 +100,14 @@ import './index.css';
       let status;
       if (winner) {
         status = `Winner: ${winner}`;
+      } else if (this.state.stepNumber === 9) {
+        status = `The result being a draw.`;
       } else {
         status = `Next player: ` + (this.state.xIsNext ? `X` : `O`);
       }
 
-      return (
+      return ( <section>
+      <App />
         <div className="game">
           <div className="game-board">
             <Board
@@ -125,6 +120,7 @@ import './index.css';
             <ol>{moves}</ol>
           </div>
         </div>
+        </section>
       );
     }
   }
@@ -157,3 +153,11 @@ import './index.css';
     }
     return null;
   }
+
+  // todo
+// [ X ] *** Display the location for each move in the format (col, row) in the move history list.
+// [ X ] *** Bold the currently selected item in the move list.
+// [ X ] *** Rewrite Board to use two loops to make the squares instead of hardcoding them.
+// [ X ] *** Add a toggle button that lets you sort the moves in either ascending or descending order.
+// [ X ] *** When someone wins, highlight the three squares that caused the win.
+// [ ok ] *** When no one wins, display a message about the result being a draw.
