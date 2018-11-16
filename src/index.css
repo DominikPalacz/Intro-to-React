@@ -68,3 +68,7 @@ body {
 	margin-left: 20px;
   }
   
+  .win {
+    background-color: rgb(221, 221, 236);
+    font-weight: bold;
+  }
