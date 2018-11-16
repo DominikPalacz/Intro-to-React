@@ -82,17 +82,15 @@ class Game extends React.Component {
     }
 
     render() {
+        
         const history = this.state.history;
         const current = history[this.state.stepNumber];
         const winner = calculateWinner(current.squares);
 
         const moves = history.map((step, move) => {
-            const desc = move ?
-                `Go to move# ${move}` :
-                `Go to game start`;
-                console.log(move)
-                console.log(this.state.stepNumber);
+            const desc = move ? `Go to move# ${move}` : `Go to game start`;
             const btnSelected = move === this.state.stepNumber ? `win`: ``;
+
             return (
                 <li key={move}>
                     <button className={`${btnSelected}`} onClick={() => this.jumpTo(move)}>{desc}</button>
@@ -102,7 +100,6 @@ class Game extends React.Component {
 
         let status;
         if (winner) {
-            console.log(winner)
             status = `Winner: ${winner}`;
         } else if (this.state.stepNumber === 9) {
             status = `The result being a draw.`;
@@ -152,13 +149,6 @@ function calculateWinner(squares) {
     for (let i = 0; i < lines.length; i++) {
         const [a, b, c] = lines[i];
         if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-            console.log(squares[a]);
-            console.log(lines[a]);
-            console.warn(lines[i]);
-            console.log(a)
-            console.log(b)
-            console.log(c)
-            
             return squares[a];
         }
     }
@@ -167,7 +157,7 @@ function calculateWinner(squares) {
 
 // todo
 // [ X ] *** Display the location for each move in the format (col, row) in the move history list.
-// [ X ] *** Bold the currently selected item in the move list.
+// [ ok ] *** Bold the currently selected item in the move list.
 // [ X ] *** Rewrite Board to use two loops to make the squares instead of hardcoding them.
 // [ X ] *** Add a toggle button that lets you sort the moves in either ascending or descending order.
 // [ X ] *** When someone wins, highlight the three squares that caused the win.
